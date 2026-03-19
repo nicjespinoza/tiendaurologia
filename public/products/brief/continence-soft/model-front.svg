@@ -1,0 +1,7 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500">
+  <rect width="1200" height="1500" fill="#000000"/>
+  <text x="600" y="200" text-anchor="middle" fill="#ffffff" font-size="42" font-family="Arial">Brief Continence Soft</text>
+  <path d="M360 520 C420 360, 780 360, 840 520 L760 1020 C740 1110, 460 1110, 440 1020 Z" fill="#2d2d2d" stroke="#00a63e" stroke-width="5"/>
+  <rect x="390" y="490" width="420" height="88" rx="18" fill="#ffffff"/>
+  <text x="600" y="1150" text-anchor="middle" fill="#ffffff" font-size="32" font-family="Arial">Model Front</text>
+</svg>
