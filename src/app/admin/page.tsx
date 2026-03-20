@@ -1,7 +1,8 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -22,7 +23,7 @@ export default function AdminLanding() {
       if (err instanceof Error) {
         setError(err.message);
       } else {
-        setError("No se pudo iniciar sesiÃ³n");
+        setError("No se pudo iniciar sesion");
       }
     }
   };
@@ -44,9 +45,12 @@ export default function AdminLanding() {
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-xl border border-border/60 bg-white px-4 py-3 text-foreground hover:border-primary"
+              className="group rounded-xl border border-border/70 bg-white px-4 py-3 text-foreground hover:border-primary"
             >
-              {link.label}
+              <span className="flex items-center justify-between">
+                {link.label}
+                <ArrowRight className="h-4 w-4 text-mutedForeground group-hover:text-primary" />
+              </span>
             </Link>
           ))}
         </div>
@@ -57,7 +61,7 @@ export default function AdminLanding() {
   return (
     <div className="section-max py-12">
       <div className="mx-auto max-w-md">
-        <Card>
+        <Card className="border-border/70">
           <CardHeader>
             <CardTitle>Acceso administrador / cajero</CardTitle>
           </CardHeader>
@@ -67,7 +71,7 @@ export default function AdminLanding() {
               <Input value={email} onChange={(e) => setEmail(e.target.value)} />
             </div>
             <div className="grid gap-2">
-              <Label>ContraseÃ±a</Label>
+              <Label>Contrasena</Label>
               <Input
                 type="password"
                 value={password}
@@ -80,11 +84,10 @@ export default function AdminLanding() {
             <Button variant="secondary" className="w-full" onClick={() => signInGoogle()}>
               Continuar con Google
             </Button>
-            {error && <p className="text-sm text-primary">{error}</p>}
+            {error && <p className="text-sm text-secondary">{error}</p>}
           </CardContent>
         </Card>
       </div>
     </div>
   );
 }
-

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -35,9 +35,9 @@ export default function POSPage() {
   }
 
   const filtered = products.filter(
-    (p) =>
-      p.name.toLowerCase().includes(query.toLowerCase()) ||
-      p.slug.toLowerCase().includes(query.toLowerCase())
+    (product) =>
+      product.name.toLowerCase().includes(query.toLowerCase()) ||
+      product.slug.toLowerCase().includes(query.toLowerCase())
   );
 
   return (
@@ -45,15 +45,16 @@ export default function POSPage() {
       <header className="flex items-center justify-between">
         <div>
           <p className="text-sm uppercase tracking-[0.2em] text-mutedForeground">POS</p>
-          <h1 className="text-3xl font-bold text-foreground">Caja tienda fÃ­sica</h1>
+          <h1 className="text-3xl font-bold text-foreground">Caja tienda fisica</h1>
         </div>
         <div className="flex items-center gap-2 text-xs text-mutedForeground">
-          <HandCoins className="h-4 w-4" />
+          <HandCoins className="h-4 w-4 text-primary" />
           Total: ${total.toFixed(2)}
         </div>
       </header>
+
       <div className="grid gap-6 lg:grid-cols-[1.4fr,1fr]">
-        <Card>
+        <Card className="border-border/70">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Search className="h-4 w-4" />
@@ -62,31 +63,31 @@ export default function POSPage() {
           </CardHeader>
           <CardContent className="space-y-4">
             <Input
-              placeholder="Nombre o cÃ³digo"
+              placeholder="Nombre o codigo"
               value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              onChange={(event) => setQuery(event.target.value)}
             />
             <div className="grid gap-3 md:grid-cols-2">
-              {filtered.map((p) => (
+              {filtered.map((product) => (
                 <div
-                  key={p.id}
+                  key={product.id}
                   className="rounded-lg border border-border/60 bg-white p-3 text-sm text-mutedForeground"
                 >
-                  <p className="text-foreground font-semibold">{p.name}</p>
-                  <p>${p.price.toFixed(2)}</p>
+                  <p className="font-semibold text-foreground">{product.name}</p>
+                  <p>${product.price.toFixed(2)}</p>
                   <Button
                     variant="outline"
                     size="sm"
                     className="mt-2"
                     onClick={() =>
                       addItem({
-                        id: p.id,
-                        name: p.name,
-                        price: p.price,
-                        size: p.variants?.[0]?.size ?? "M",
-                        color: p.variants?.[0]?.color ?? "negro",
+                        id: product.id,
+                        name: product.name,
+                        price: product.price,
+                        size: product.variants?.[0]?.size ?? "M",
+                        color: product.variants?.[0]?.color ?? "negro",
                         quantity: 1,
-                        image: p.images?.[0] ?? "",
+                        image: product.images?.[0] ?? "",
                       })
                     }
                   >
@@ -97,18 +98,20 @@ export default function POSPage() {
             </div>
           </CardContent>
         </Card>
+
         <div className="space-y-4">
           <POSCart
             items={items}
             onQtyChange={(item, qty) => updateQty(item.id, item.size, item.color, qty)}
             onRemove={(item) => removeItem(item.id, item.size, item.color)}
           />
-          <Card>
+
+          <Card className="border-border/70">
             <CardHeader>
-              <CardTitle>MÃ©todo de pago</CardTitle>
+              <CardTitle>Metodo de pago</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 {[
                   { label: "Tilopay", value: "Tilopay", icon: CreditCard },
                   { label: "Efectivo", value: "Efectivo", icon: HandCoins },
@@ -126,6 +129,7 @@ export default function POSPage() {
                   </Button>
                 ))}
               </div>
+
               {paymentMethod === "Tilopay" ? (
                 <TilopayButton
                   amount={total}
@@ -146,4 +150,3 @@ export default function POSPage() {
     </div>
   );
 }
-

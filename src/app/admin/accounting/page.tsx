@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -62,7 +62,7 @@ export default function AccountingPage() {
       <div className="grid gap-6 lg:grid-cols-[1.5fr,1fr]">
         <Card>
           <CardHeader>
-            <CardTitle>HistÃ³rico</CardTitle>
+            <CardTitle>Historico</CardTitle>
           </CardHeader>
           <CardContent className="space-y-2 text-sm text-mutedForeground">
             {movements.map((m) => (
@@ -73,7 +73,7 @@ export default function AccountingPage() {
                 <div>
                   <p className="text-foreground font-semibold">{m.type}</p>
                   <p>{m.description}</p>
-                  <p>MÃ©todo: {m.method}</p>
+                  <p>Metodo: {m.method}</p>
                 </div>
                 <p className="text-primary font-semibold">${m.amount.toFixed(2)}</p>
               </div>
@@ -111,4 +111,5 @@ export default function AccountingPage() {
     </div>
   );
 }
+
 

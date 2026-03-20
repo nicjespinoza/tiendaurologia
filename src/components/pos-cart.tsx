@@ -1,4 +1,4 @@
-﻿import { CartItem } from "@/contexts/cart-context";
+import { CartItem } from "@/contexts/cart-context";
 import { Button } from "./ui/button";
 
 type Props = {
@@ -15,7 +15,7 @@ export function POSCart({ items, onQtyChange, onRemove }: Props) {
       <div className="flex items-center justify-between">
         <h3 className="text-lg font-semibold text-foreground">Ticket</h3>
         <span className="text-sm text-mutedForeground">
-          {items.length} Ã­tems Â· ${total.toFixed(2)}
+          {items.length} items - ${total.toFixed(2)}
         </span>
       </div>
       <div className="space-y-3">
@@ -27,7 +27,7 @@ export function POSCart({ items, onQtyChange, onRemove }: Props) {
             <div>
               <p className="text-foreground font-semibold">{item.name}</p>
               <p className="text-xs text-mutedForeground">
-                {item.size} Â· {item.color}
+                {item.size} - {item.color}
               </p>
               <p className="text-xs text-mutedForeground">
                 ${item.price.toFixed(2)} c/u
@@ -58,4 +58,5 @@ export function POSCart({ items, onQtyChange, onRemove }: Props) {
     </div>
   );
 }
+
 

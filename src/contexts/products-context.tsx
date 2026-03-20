@@ -54,11 +54,11 @@ const demoProducts: Product[] = [
     colors: ["negro", "blanco"],
     sizes: ["S", "M", "L", "XL"],
     images: [
-      "/products/boxer-brief/support-plus/model-front.png",
-      "/products/boxer-brief/support-plus/flat-lay.png",
-      "/products/boxer-brief/support-plus/model-side.png",
-      "/products/boxer-brief/support-plus/detail-fabric.png",
-      "/products/boxer-brief/support-plus/waist-band.png",
+      "/products/boxer-brief/protech_dry_1.webp",
+      "/products/boxer-brief/protech_dry_black_brief.webp",
+      "/products/boxer-brief/protech_dry_white.webp",
+      "/products/boxer-brief/protech_dry_white_brief.webp",
+      "/products/shared/protech_dry_1.webp",
     ],
     variants: [
       { size: "M", color: "negro", quantity: 12 },
@@ -79,11 +79,11 @@ const demoProducts: Product[] = [
     colors: ["negro", "verde medico"],
     sizes: ["M", "L", "XL", "2XL"],
     images: [
-      "/products/trunk/post-op-care/model-front.png",
-      "/products/trunk/post-op-care/flat-lay.png",
-      "/products/trunk/post-op-care/model-side.png",
-      "/products/trunk/post-op-care/detail-fabric.png",
-      "/products/trunk/post-op-care/waist-band.png",
+      "/products/trunk/test-eeze_1.webp",
+      "/products/trunk/test-eeze_2.webp",
+      "/products/trunk/test-eeze_3.webp",
+      "/products/trunk/test-eeze_4.webp",
+      "/products/shared/protech_dry_1.webp",
     ],
     variants: [
       { size: "M", color: "verde medico", quantity: 7 },
@@ -104,11 +104,10 @@ const demoProducts: Product[] = [
     colors: ["negro", "gris"],
     sizes: ["M", "L", "XL", "2XL", "3XL"],
     images: [
-      "/products/brief/continence-soft/model-front.png",
+      "/products/brief/cathwear_2.webp",
+      "/products/brief/cathwear_4.webp",
       "/products/brief/continence-soft/flat-lay.png",
-      "/products/brief/continence-soft/model-side.png",
-      "/products/brief/continence-soft/detail-fabric.png",
-      "/products/brief/continence-soft/waist-band.png",
+      "/products/shared/protech_dry_1.webp",
     ],
     variants: [
       { size: "M", color: "gris", quantity: 10 },

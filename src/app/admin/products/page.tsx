@@ -2,6 +2,7 @@
 
 import { addDoc, collection } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/auth-context";
@@ -153,14 +154,13 @@ export default function ProductsAdminPage() {
           <CardContent className="grid gap-4 md:grid-cols-2">
             {products.map((product) => (
               <div key={product.id} className="rounded-lg border border-border p-3">
-                <div className="mb-2 aspect-[4/3] overflow-hidden rounded border border-border">
-                  <img
+                <div className="relative mb-2 aspect-[4/3] overflow-hidden rounded border border-border">
+                  <Image
                     src={product.images?.[0] ?? "/products/shared/placeholder.png"}
                     alt={product.name}
-                    className="h-full w-full object-cover"
-                    onError={(e) => {
-                      e.currentTarget.src = "/products/shared/placeholder.png";
-                    }}
+                    fill
+                    sizes="320px"
+                    className="object-cover"
                   />
                 </div>
                 <p className="font-semibold text-foreground">{product.name}</p>
@@ -210,6 +210,8 @@ export default function ProductsAdminPage() {
               <div className="grid grid-cols-3 gap-2">
                 {previewUrls.map((preview) => (
                   <div key={preview.name} className="overflow-hidden rounded border border-border">
+                    {/* Local blob previews are not supported by next/image optimization pipeline. */}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={preview.url} alt={preview.name} className="h-20 w-full object-cover" />
                   </div>
                 ))}

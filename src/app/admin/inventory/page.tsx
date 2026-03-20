@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -33,7 +33,7 @@ export default function InventoryPage() {
             >
               <p className="text-foreground font-semibold">{row.name}</p>
               <p>
-                {row.variant.size} Â· {row.variant.color}
+                {row.variant.size} - {row.variant.color}
               </p>
               <p className={row.variant.quantity < 5 ? "text-primary" : ""}>
                 Stock: {row.variant.quantity}
@@ -46,4 +46,5 @@ export default function InventoryPage() {
     </div>
   );
 }
+
 

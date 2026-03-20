@@ -8,7 +8,7 @@
   --border: #d1d5db;
   --muted: #f8fafc;
   --muted-foreground: #042a8f;
-  --primary: #00a63e;
+  --primary: #2e7618;
   --secondary: #042a8f;
 }
 
@@ -22,10 +22,49 @@ body {
     sans-serif;
 }
 
+a {
+  @apply transition-colors duration-200;
+}
+
+.hover-lift {
+  @apply transition-transform duration-300 ease-out hover:-translate-y-0.5;
+}
+
+.stagger-fade {
+  animation: fadeUp 500ms ease-out both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .glass-panel {
   @apply border border-border/80 bg-white/90 backdrop-blur;
 }
 
 .section-max {
   @apply mx-auto w-full max-w-6xl px-4 md:px-8;
+}
+.hover-lift {
+  @apply transition-transform duration-300 ease-out hover:-translate-y-0.5;
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 1.4s ease-in-out infinite;
 }

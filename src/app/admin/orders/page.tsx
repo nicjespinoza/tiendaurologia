@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -26,7 +26,7 @@ export default function OrdersPage() {
       </header>
       <Card>
         <CardHeader>
-          <CardTitle>Ãšltimos pedidos</CardTitle>
+          <CardTitle>Ultimos pedidos</CardTitle>
         </CardHeader>
         <CardContent className="grid gap-3 md:grid-cols-2">
           {dummyOrders.map((order) => (
@@ -42,4 +42,5 @@ export default function OrdersPage() {
     </div>
   );
 }
+
 
