@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useAuth } from "@/contexts/auth-context";
@@ -10,10 +11,15 @@ export default function InventoryPage() {
   const router = useRouter();
   const { inventory } = useInventory();
 
-  if (!user) {
-    router.push("/admin");
-    return null;
-  }
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    setReady(true);
+    if (!user) {
+      router.replace("/admin");
+    }
+  }, [user, router]);
+
+  if (!ready || !user) return null;
 
   return (
     <div className="section-max space-y-8 py-12">

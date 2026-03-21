@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { AccountingSummary } from "@/components/accounting-summary";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -10,6 +11,7 @@ export default function DashboardPage() {
   const { user, role } = useAuth();
   const router = useRouter();
   const { lowStock } = useInventory();
+  const [ready, setReady] = useState(false);
 
   const stats = [
     { label: "Ventas hoy", value: 0 },
@@ -27,10 +29,14 @@ export default function DashboardPage() {
     { name: "Hoy", total: 480 },
   ];
 
-  if (!user) {
-    router.push("/admin");
-    return null;
-  }
+  useEffect(() => {
+    setReady(true);
+    if (!user) {
+      router.replace("/admin");
+    }
+  }, [user, router]);
+
+  if (!ready || !user) return null;
 
   return (
     <div className="section-max space-y-8 py-12">

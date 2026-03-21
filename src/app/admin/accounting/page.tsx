@@ -1,12 +1,12 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/auth-context";
-import { useState } from "react";
 
 type Movement = {
   id: string;
@@ -39,10 +39,15 @@ export default function AccountingPage() {
     method: "Tilopay",
   });
 
-  if (!user) {
-    router.push("/admin");
-    return null;
-  }
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    setReady(true);
+    if (!user) {
+      router.replace("/admin");
+    }
+  }, [user, router]);
+
+  if (!ready || !user) return null;
 
   const addMovement = () => {
     const newId =

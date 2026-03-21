@@ -10,6 +10,10 @@ import { useCart } from "@/contexts/cart-context";
 import { TilopayButton } from "@/components/tilopay-button";
 import { CheckoutStepper } from "@/components/checkout-stepper";
 import { OrderSummaryCard } from "@/components/order-summary-card";
+import { useAuth } from "@/contexts/auth-context";
+import { useSavedCards } from "@/hooks/useSavedCards";
+import { Checkbox } from "@/components/ui/checkbox";
+import { cn } from "@/lib/utils";
 
 const REQUIRED_FIELDS = ["email", "firstName", "lastName", "address", "city"] as const;
 
@@ -24,6 +28,8 @@ type CheckoutForm = {
 
 export default function CheckoutPage() {
   const { items, total, clear } = useCart();
+  const { user } = useAuth();
+  const { cards } = useSavedCards();
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [form, setForm] = useState<CheckoutForm>({
     email: "",
@@ -35,14 +41,25 @@ export default function CheckoutPage() {
   });
   const [status, setStatus] = useState<string | null>(null);
   const [orderId] = useState(() => `ORD-${crypto.randomUUID?.() ?? Date.now()}`);
+  const [saveCard, setSaveCard] = useState(false);
+  const [selectedCard, setSelectedCard] = useState<string | null>(null);
 
   const isFormValid = useMemo(
     () => REQUIRED_FIELDS.every((field) => form[field].trim().length > 0) && form.email.includes("@"),
     [form]
   );
 
-  const nextStep = () => setStep((s) => Math.min(3, (s + 1) as 1 | 2 | 3));
-  const prevStep = () => setStep((s) => Math.max(1, (s - 1) as 1 | 2 | 3));
+  const nextStep = () =>
+    setStep((s) => {
+      if (s >= 3) return 3;
+      return (s + 1) as 1 | 2 | 3;
+    });
+
+  const prevStep = () =>
+    setStep((s) => {
+      if (s <= 1) return 1;
+      return (s - 1) as 1 | 2 | 3;
+    });
 
   const handleSuccess = () => {
     setStatus("Pago exitoso. Gracias por tu compra.");
@@ -110,12 +127,60 @@ export default function CheckoutPage() {
             {step === 3 && (
               <div className="space-y-3 text-sm text-mutedForeground">
                 <p>Confirma tu pago con Tilopay. Recibiras un comprobante al correo.</p>
+
+                {user && cards.length > 0 && (
+                  <div className="space-y-2 rounded-lg border border-gray-200 p-3">
+                    <p className="text-sm font-semibold text-foreground">Usar tarjeta guardada</p>
+                    <div className="space-y-2">
+                      {cards.map((card) => (
+                        <label
+                          key={card.tokenTilopay ?? card.last4}
+                          className={cn(
+                            "flex cursor-pointer items-center justify-between rounded-md border px-3 py-2",
+                            selectedCard === card.tokenTilopay
+                              ? "border-primary bg-primary/5"
+                              : "border-gray-200"
+                          )}
+                        >
+                          <div>
+                            <p className="text-sm font-semibold text-foreground">
+                              {card.brand ?? "Tarjeta"} •••• {card.last4}
+                            </p>
+                            {card.expiry && <p className="text-xs text-mutedForeground">Exp: {card.expiry}</p>}
+                          </div>
+                          <input
+                            type="radio"
+                            name="savedCard"
+                            checked={selectedCard === card.tokenTilopay}
+                            onChange={() => setSelectedCard(card.tokenTilopay ?? null)}
+                          />
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <div className="flex items-center gap-2 rounded-lg border border-gray-200 px-3 py-2">
+                  <Checkbox
+                    id="saveCard"
+                    checked={saveCard}
+                    disabled={!user || !!selectedCard}
+                    onCheckedChange={(v) => setSaveCard(!!v)}
+                  />
+                  <Label htmlFor="saveCard" className="text-sm text-mutedForeground">
+                    Guardar tarjeta para futuras compras (Tilopay)
+                  </Label>
+                </div>
+
                 <TilopayButton
                   amount={total}
-                  orderId={orderId}
+                  orderId={user ? `${orderId}|uid:${user.uid}` : orderId}
                   email={form.email}
                   firstName={form.firstName}
                   lastName={form.lastName}
+                  userId={user?.uid}
+                  cardToken={selectedCard ?? undefined}
+                  saveCard={saveCard}
                   onSuccess={handleSuccess}
                   onError={(message) => setStatus(message)}
                 />

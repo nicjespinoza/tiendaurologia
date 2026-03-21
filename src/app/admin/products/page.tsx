@@ -56,10 +56,15 @@ export default function ProductsAdminPage() {
     };
   }, [previewUrls]);
 
-  if (!user) {
-    router.push("/admin");
-    return null;
-  }
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    setReady(true);
+    if (!user) {
+      router.replace("/admin");
+    }
+  }, [user, router]);
+
+  if (!ready || !user) return null;
 
   const handleImagesChange = (files: FileList | null) => {
     if (!files) return;

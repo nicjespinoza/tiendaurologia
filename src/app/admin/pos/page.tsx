@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Search, CreditCard, HandCoins, Banknote } from "lucide-react";
 import { useAuth } from "@/contexts/auth-context";
@@ -25,14 +25,15 @@ export default function POSPage() {
     () => `POS-${typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : "local"}`
   );
 
-  if (!user) {
-    router.push("/admin");
-    return null;
-  }
-  if (!["admin", "cashier"].includes(role)) {
-    router.push("/");
-    return null;
-  }
+  useEffect(() => {
+    if (!user) {
+      router.replace("/admin");
+    } else if (!["admin", "cashier"].includes(role)) {
+      router.replace("/");
+    }
+  }, [user, role, router]);
+
+  if (!user || !["admin", "cashier"].includes(role)) return null;
 
   const filtered = products.filter(
     (product) =>

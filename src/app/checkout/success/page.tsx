@@ -1,4 +1,4 @@
-import { CheckCircle2, PartyPopper } from "lucide-react";
+ï»¿import { CheckCircle2, PartyPopper } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
@@ -12,14 +12,14 @@ export default function CheckoutSuccessPage() {
         </div>
         <h1 className="text-3xl font-bold text-foreground">Pago confirmado</h1>
         <p className="text-mutedForeground">
-          Gracias por confiar en InnerMan. Tu pedido se procesará en minutos y recibirás confirmación por correo.
+          Gracias por confiar en InnerMan. Tu pedido se procesara en minutos y recibiras confirmacion por correo.
         </p>
         <div className="mx-auto flex flex-col items-center gap-2 rounded-2xl border border-border bg-white p-4 shadow-sm">
           <div className="flex items-center gap-2 text-primary">
             <CheckCircle2 className="h-5 w-5" />
             Pago seguro con Tilopay
           </div>
-          <div className="text-sm text-mutedForeground">Envío discreto, sin logos visibles.</div>
+          <div className="text-sm text-mutedForeground">Envio discreto, sin logos visibles.</div>
         </div>
         <div className="flex flex-wrap justify-center gap-3">
           <Link href="/shop">

@@ -1,3 +1,23 @@
+// Polyfill location for Firebase SDK when rendering on the server.
+if (typeof location === "undefined") {
+  const origin = "https://localhost";
+  // Minimal shape to satisfy URL base requirements in server render.
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  global.location = {
+    protocol: "https:",
+    host: "localhost",
+    hostname: "localhost",
+    href: origin,
+    origin,
+  };
+}
+if (typeof window === "undefined") {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  global.window = { location: global.location };
+}
+
 import { getApps, initializeApp, type FirebaseApp } from "firebase/app";
 import { getAuth, type Auth } from "firebase/auth";
 import { getFirestore, type Firestore } from "firebase/firestore";

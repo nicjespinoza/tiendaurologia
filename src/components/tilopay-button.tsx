@@ -10,6 +10,9 @@ type Props = {
   email: string;
   firstName?: string;
   lastName?: string;
+  userId?: string;
+  cardToken?: string;
+  saveCard?: boolean;
   onSuccess?: () => void;
   onError?: (message: string) => void;
 };
@@ -20,6 +23,9 @@ export function TilopayButton({
   email,
   firstName,
   lastName,
+  userId,
+  cardToken,
+  saveCard,
   onSuccess,
   onError,
 }: Props) {
@@ -43,9 +49,12 @@ export function TilopayButton({
         billToFirstName: firstName,
         billToLastName: lastName,
         orderNumber: orderId,
-        redirect: `${window.location.origin}/checkout/success`,
+        redirect: "/checkout/success",
         capture: 1,
         subscription: 0,
+        userId,
+        cardToken,
+        saveCard,
       });
 
       const message =

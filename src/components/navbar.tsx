@@ -22,6 +22,7 @@ export function Navbar() {
           <Link href="/shop" className="font-medium hover:text-foreground">Catalogo</Link>
           <Link href="/cart" className="font-medium hover:text-foreground">Carrito</Link>
           <Link href="/checkout" className="font-medium hover:text-foreground">Checkout</Link>
+          <Link href="/account" className="font-medium hover:text-foreground">Cuenta</Link>
           <Link href="/admin" className="flex items-center gap-2 hover:text-foreground">
             <Shield className="h-4 w-4 text-secondary" />
             Admin
@@ -52,7 +53,7 @@ export function Navbar() {
               Salir
             </Button>
           ) : (
-            <Link href="/admin">
+            <Link href="/login">
               <Button variant="secondary" size="sm" className="bg-secondary text-white hover:bg-secondary/90">
                 <User className="h-4 w-4" />
                 Ingresar
