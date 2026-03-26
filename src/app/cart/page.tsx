@@ -48,7 +48,7 @@ export default function CartPage() {
                 <div className="space-y-1 text-sm">
                   <p className="font-semibold text-foreground">{item.name}</p>
                   <p className="text-mutedForeground">
-                    {item.size} • {item.color}
+                    {item.size} ï¿½ {item.color}
                   </p>
                   <p className="text-primary font-semibold">${item.price.toFixed(2)}</p>
                   <div className="inline-flex items-center gap-2 rounded-full bg-muted px-3 py-1 text-xs text-mutedForeground">

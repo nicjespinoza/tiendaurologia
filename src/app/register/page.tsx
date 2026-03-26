@@ -21,7 +21,7 @@ export default function RegisterPage() {
           </div>
 
           <div className="mt-8 flex items-center justify-between rounded-2xl bg-primary/5 px-4 py-3 text-sm">
-            <span className="text-foreground">¿Ya tienes cuenta?</span>
+            <span className="text-foreground">ï¿½Ya tienes cuenta?</span>
             <Link href="/login">
               <button className="rounded-lg bg-secondary px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-secondary/90">
                 Iniciar sesion

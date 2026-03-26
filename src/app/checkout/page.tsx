@@ -144,7 +144,7 @@ export default function CheckoutPage() {
                         >
                           <div>
                             <p className="text-sm font-semibold text-foreground">
-                              {card.brand ?? "Tarjeta"} •••• {card.last4}
+                              {card.brand ?? "Tarjeta"} ï¿½ï¿½ï¿½ï¿½ {card.last4}
                             </p>
                             {card.expiry && <p className="text-xs text-mutedForeground">Exp: {card.expiry}</p>}
                           </div>
