@@ -17,9 +17,4 @@ jobs:
       - name: Build
         run: npm run build
       - name: Deploy to Firebase
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ECOM_URO }}'
-          channelId: live
-          projectId: ecom-uro
+        run: npx firebase-tools deploy --token "${{ secrets.FIREBASE_TOKEN }}" --only hosting
