@@ -220,9 +220,10 @@ export default function AccountPage() {
       );
       return;
     }
-    const batch = writeBatch(db);
+    const safeDb = db as any; // Cast to bypass strict null check for doc()
+    const batch = writeBatch(safeDb);
     addresses.forEach((addr) => {
-      batch.update(doc(db, "addresses", addr.id), { isDefault: addr.id === id });
+      batch.update(doc(safeDb, "addresses", addr.id), { isDefault: addr.id === id });
     });
     await batch.commit();
     setAddresses((prev) =>
@@ -257,9 +258,10 @@ export default function AccountPage() {
       );
       return;
     }
-    const batch = writeBatch(db);
+    const safeDb = db as any;
+    const batch = writeBatch(safeDb);
     cards.forEach((card) => {
-      batch.update(doc(db, "paymentMethods", card.id), {
+      batch.update(doc(safeDb, "paymentMethods", card.id), {
         isDefault: card.id === id,
       });
     });

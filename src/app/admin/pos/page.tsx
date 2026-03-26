@@ -28,12 +28,12 @@ export default function POSPage() {
   useEffect(() => {
     if (!user) {
       router.replace("/admin");
-    } else if (!["admin", "cashier"].includes(role)) {
+    } else if (!["admin", "cashier"].includes(role || "")) {
       router.replace("/");
     }
   }, [user, role, router]);
 
-  if (!user || !["admin", "cashier"].includes(role)) return null;
+  if (!user || !["admin", "cashier"].includes(role || "")) return null;
 
   const filtered = products.filter(
     (product) =>

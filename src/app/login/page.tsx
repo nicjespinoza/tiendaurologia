@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import { LoginForm } from "@/components/login-form";
@@ -21,7 +21,7 @@ export default function LoginPage() {
           </div>
 
           <div className="mt-6 flex items-center justify-between rounded-2xl bg-primary/5 px-4 py-3 text-sm">
-            <span className="text-foreground">¿No tienes cuenta?</span>
+            <span className="text-foreground">�No tienes cuenta?</span>
             <Link href="/register">
               <button className="rounded-lg bg-secondary px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-secondary/90">
                 Registrarse

@@ -4,16 +4,26 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #000000;
-  --border: #d1d5db;
-  --muted: #f8fafc;
-  --muted-foreground: #042a8f;
-  --primary: #2e7618;
-  --secondary: #042a8f;
+  --foreground: #1a2332;
+  --border: #d1dde6;
+  --muted: #f0f6fa;
+  --muted-foreground: #5a6b7d;
+  --primary: #0a5c82;
+  --primary-dark: #073f5a;
+  --primary-light: #6db8d4;
+  --secondary: #e8712e;
+  --accent: #78b943;
+  --navy: #0b2545;
+  --teal: #1b8aaf;
+  --light-blue: #e1f0f8;
 }
 
 * {
   @apply border-border;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -26,10 +36,52 @@ a {
   @apply transition-colors duration-200;
 }
 
-.hover-lift {
-  @apply transition-transform duration-300 ease-out hover:-translate-y-0.5;
+/* ── Utility Classes ── */
+.section-max {
+  @apply mx-auto w-full max-w-7xl px-4 md:px-8;
 }
 
+.hover-lift {
+  @apply transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg;
+}
+
+.glass-panel {
+  @apply border border-border/60 bg-white/90 backdrop-blur-md shadow-sm;
+}
+
+/* ── Gradient Overlays ── */
+.gradient-navy {
+  background: linear-gradient(135deg, #0b2545 0%, #0a5c82 50%, #1b8aaf 100%);
+}
+
+.gradient-teal {
+  background: linear-gradient(135deg, #0a5c82 0%, #1b8aaf 60%, #6db8d4 100%);
+}
+
+.gradient-light {
+  background: linear-gradient(180deg, #f0f6fa 0%, #ffffff 100%);
+}
+
+/* ── Hero Gradient ── */
+.hero-gradient {
+  background: linear-gradient(
+    135deg,
+    #0b2545 0%,
+    #0a5c82 40%,
+    #1b8aaf 70%,
+    #6db8d4 100%
+  );
+}
+
+/* ── Text Gradient ── */
+.text-gradient {
+  background: linear-gradient(135deg, #0a5c82, #78b943);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Stagger Animation ── */
 .stagger-fade {
   animation: fadeUp 500ms ease-out both;
 }
@@ -37,7 +89,7 @@ a {
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(15px);
   }
   to {
     opacity: 1;
@@ -45,26 +97,57 @@ a {
   }
 }
 
-.glass-panel {
-  @apply border border-border/80 bg-white/90 backdrop-blur;
-}
-
-.section-max {
-  @apply mx-auto w-full max-w-6xl px-4 md:px-8;
-}
-.hover-lift {
-  @apply transition-transform duration-300 ease-out hover:-translate-y-0.5;
-}
-
-@keyframes pulse-slow {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.08);
-  }
-}
-
+/* ── Animations ── */
 .animate-pulse-slow {
-  animation: pulse-slow 1.4s ease-in-out infinite;
+  animation: pulseSlow 1.4s ease-in-out infinite;
+}
+
+@keyframes pulseSlow {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+/* ── Category Card Hover ── */
+.category-card {
+  @apply relative overflow-hidden rounded-2xl transition-all duration-500;
+}
+
+.category-card:hover .category-card-img {
+  transform: scale(1.08);
+}
+
+.category-card:hover .category-card-overlay {
+  opacity: 0.85;
+}
+
+/* ── Section Divider ── */
+.section-divider {
+  height: 4px;
+  background: linear-gradient(90deg, #0a5c82, #78b943, #e8712e);
+  border-radius: 2px;
+}
+
+/* ── Scroll shadows ── */
+.scroll-shadow {
+  mask-image: linear-gradient(to right, transparent, black 2%, black 98%, transparent);
+}
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f6fa;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0a5c82;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #073f5a;
 }

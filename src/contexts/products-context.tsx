@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { collection, DocumentData, onSnapshot, query } from "firebase/firestore";
 import React, { createContext, useContext, useEffect, useMemo, useState } from "react";

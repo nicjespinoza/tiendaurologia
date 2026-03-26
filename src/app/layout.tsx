@@ -12,15 +12,15 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "InnerMan UroCare | Ropa interior para urologia",
+  title: "Vital Care | Equipos Médicos y Suplementos",
   description:
-    "InnerMan UroCare ofrece ropa interior masculina con soporte clinico y confort para pacientes con padecimientos urologicos.",
-  metadataBase: new URL("https://innerman.vercel.app"),
+    "Vital Care: distribución de equipos médicos, electrocauterios, material de reposición, suplementos y línea de descanso. Servicio profesional en Veracruz.",
+  metadataBase: new URL("https://asvitalcare.com"),
   openGraph: {
-    title: "InnerMan UroCare | Ropa interior para urologia",
+    title: "Vital Care | Equipos Médicos y Suplementos",
     description:
-      "Catalogo especializado en boxer briefs, trunks y briefs para pacientes de urologia.",
-    url: "https://innerman.vercel.app",
+      "Equipos de ginecología, urología, oftalmología, electrocauterios y más. Renta de equipos Venus y Laser.",
+    url: "https://asvitalcare.com",
     type: "website",
   },
 };

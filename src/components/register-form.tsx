@@ -1,4 +1,4 @@
-Ôªø"use client";
+"use client";
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -17,11 +17,11 @@ const schema = z.object({
   lastName: z.string().min(2, "Requerido"),
   idNumber: z
     .string()
-    .regex(/^[0-9]{13}[A-Za-z]$/, "Debe ser 13 d√≠gitos y una letra final; sin guiones"),
-  phone: z.string().min(8, "Tel√©fono inv√°lido"),
-  email: z.string().email("Correo inv√°lido"),
-  address: z.string().min(5, "Direcci√≥n inv√°lida"),
-  password: z.string().min(6, "M√≠nimo 6 caracteres"),
+    .regex(/^[0-9]{13}[A-Za-z]$/, "Debe ser 13 dÌgitos y una letra final; sin guiones"),
+  phone: z.string().min(8, "TelÈfono inv·lido"),
+  email: z.string().email("Correo inv·lido"),
+  address: z.string().min(5, "DirecciÛn inv·lida"),
+  password: z.string().min(6, "MÌnimo 6 caracteres"),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -59,14 +59,14 @@ export function RegisterForm() {
         <p className="text-sm font-semibold">Tus datos estan protegidos y verificados</p>
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 p-6">
-        {[{ name: "firstName", label: "Nombre" }, { name: "lastName", label: "Apellidos" }, { name: "idNumber", label: "C√©dula" }, { name: "phone", label: "Tel√©fono" }, { name: "email", label: "Correo" }, { name: "address", label: "Direcci√≥n" }].map((field) => (
+        {[{ name: "firstName", label: "Nombre" }, { name: "lastName", label: "Apellidos" }, { name: "idNumber", label: "CÈdula" }, { name: "phone", label: "TelÈfono" }, { name: "email", label: "Correo" }, { name: "address", label: "DirecciÛn" }].map((field) => (
           <div key={field.name} className="grid gap-1.5">
             <Label>{field.label}</Label>
             <Input
               {...register(field.name as keyof FormData)}
               className="bg-white/80"
               maxLength={field.name === "idNumber" ? 14 : undefined}
-              placeholder={field.name === "idNumber" ? "Ingresa la c√©dula sin guiones; 13 d√≠gitos y letra" : undefined}
+              placeholder={field.name === "idNumber" ? "Ingresa la cÈdula sin guiones; 13 dÌgitos y letra" : undefined}
               onInput={(e) => {
                 if (field.name === "idNumber") {
                   const target = e.target as HTMLInputElement;
@@ -82,7 +82,7 @@ export function RegisterForm() {
           </div>
         ))}
         <div className="grid gap-1.5">
-          <Label>Contrase√±a</Label>
+          <Label>ContraseÒa</Label>
           <Input type="password" {...register("password")} className="bg-white/80" />
           {errors.password && <p className="text-xs text-secondary">{errors.password.message}</p>}
         </div>

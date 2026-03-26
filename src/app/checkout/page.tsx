@@ -1,4 +1,4 @@
-ï»¿"use client";
+"use client";
 
 import { useMemo, useState } from "react";
 import { MapPin, Mail, CreditCard } from "lucide-react";
@@ -144,7 +144,7 @@ export default function CheckoutPage() {
                         >
                           <div>
                             <p className="text-sm font-semibold text-foreground">
-                              {card.brand ?? "Tarjeta"} â€¢â€¢â€¢â€¢ {card.last4}
+                              {card.brand ?? "Tarjeta"} •••• {card.last4}
                             </p>
                             {card.expiry && <p className="text-xs text-mutedForeground">Exp: {card.expiry}</p>}
                           </div>

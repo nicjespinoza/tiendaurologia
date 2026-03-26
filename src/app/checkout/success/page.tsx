@@ -1,4 +1,4 @@
-﻿import { CheckCircle2, PartyPopper } from "lucide-react";
+import { CheckCircle2, PartyPopper } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
@@ -22,7 +22,7 @@ export default function CheckoutSuccessPage() {
           <div className="text-sm text-mutedForeground">Envio discreto, sin logos visibles.</div>
         </div>
         <div className="flex flex-wrap justify-center gap-3">
-          <Link href="/shop">
+          <Link href="/categorias">
             <Button variant="outline">Seguir comprando</Button>
           </Link>
           <Link href="/">

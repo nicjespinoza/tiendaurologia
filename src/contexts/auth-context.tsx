@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import {
@@ -44,6 +44,7 @@ export type UserProfile = {
 type AuthContextValue = {
   user: User | null;
   userProfile: UserProfile | null;
+  role: "admin" | "cashier" | "customer" | null;
   loading: boolean;
   registerUser: (
     data: Omit<UserProfile, "uid" | "createdAt" | "geo" | "ip"> & { password: string },
@@ -148,7 +149,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const value = useMemo(
-    () => ({ user, userProfile, loading, registerUser, signInEmail, signInGoogle, logout }),
+    () => ({
+      user,
+      userProfile,
+      role: userProfile?.role ?? null,
+      loading,
+      registerUser,
+      signInEmail,
+      signInGoogle,
+      logout,
+    }),
     [user, userProfile, loading]
   );
 

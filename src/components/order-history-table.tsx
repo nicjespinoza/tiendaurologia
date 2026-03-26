@@ -58,7 +58,7 @@ export default function OrderHistoryTable({ orders, loading }: Props) {
             </tr>
           </thead>
           <tbody>
-            {(loading ? Array.from({ length: 3 }) : sorted).map((order, idx) => (
+            {(loading ? Array.from({ length: 3 }) : sorted).map((order: any, idx) => (
               <tr
                 key={loading ? `skeleton-${idx}` : order.id}
                 className="border-b last:border-0"

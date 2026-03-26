@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -48,7 +48,7 @@ export default function CartPage() {
                 <div className="space-y-1 text-sm">
                   <p className="font-semibold text-foreground">{item.name}</p>
                   <p className="text-mutedForeground">
-                    {item.size} • {item.color}
+                    {item.size} � {item.color}
                   </p>
                   <p className="text-primary font-semibold">${item.price.toFixed(2)}</p>
                   <div className="inline-flex items-center gap-2 rounded-full bg-muted px-3 py-1 text-xs text-mutedForeground">
@@ -82,7 +82,7 @@ export default function CartPage() {
               <div className="rounded-xl border border-dashed border-border p-8 text-center">
                 <p className="font-semibold text-foreground">Tu carrito esta vacio</p>
                 <p className="mt-1 text-sm text-mutedForeground">Agrega productos para continuar.</p>
-                <Link href="/shop" className="mt-4 inline-block">
+                <Link href="/categorias" className="mt-4 inline-block">
                   <Button>Ir al catalogo</Button>
                 </Link>
               </div>

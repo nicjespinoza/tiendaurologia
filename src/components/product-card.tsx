@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import Image from "next/image";
 import { ShoppingCart } from "lucide-react";
 import { useMemo } from "react";
@@ -40,7 +40,7 @@ export function ProductCard({ product }: { product: Product }) {
   ].filter(Boolean) as { label: string; color: string }[];
 
   return (
-    <Card className="group relative overflow-hidden border-border/70 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
+    <Card className="hidden group relative overflow-hidden border-border/70 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
       <div className="absolute left-4 top-4 z-10 flex flex-wrap gap-2">
         {badges.map((b) => (
           <Badge key={b.label} className={`${b.color} shadow-md`}>
