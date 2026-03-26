@@ -12,17 +12,10 @@ export function Footer() {
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2.5">
               <Image
-<<<<<<< HEAD
-                src="/logo/logo1.png"
-                alt="Vital Care"
-                width={40}
-                height={40}
-=======
                 src="/logo/logo2.png"
                 alt="Vital Care"
                 width={100}
                 height={100}
->>>>>>> redesign-final
               />
               <div>
                 <span className="text-lg font-bold tracking-tight">
@@ -52,21 +45,6 @@ export function Footer() {
               Categorías
             </h4>
             <nav className="flex flex-col gap-2 text-sm text-white/50">
-<<<<<<< HEAD
-              <Link href="/shop" className="hover:text-white transition-colors">
-                Ginecología
-              </Link>
-              <Link href="/shop" className="hover:text-white transition-colors">
-                Urología
-              </Link>
-              <Link href="/shop" className="hover:text-white transition-colors">
-                Oftalmología
-              </Link>
-              <Link href="/shop" className="hover:text-white transition-colors">
-                Electrocauterios
-              </Link>
-              <Link href="/shop" className="hover:text-white transition-colors">
-=======
               <Link href="/categorias" className="hover:text-white transition-colors">
                 Ginecología
               </Link>
@@ -80,7 +58,6 @@ export function Footer() {
                 Electrocauterios
               </Link>
               <Link href="/categorias" className="hover:text-white transition-colors">
->>>>>>> redesign-final
                 Suplementos
               </Link>
             </nav>
@@ -92,11 +69,7 @@ export function Footer() {
               Información
             </h4>
             <nav className="flex flex-col gap-2 text-sm text-white/50">
-<<<<<<< HEAD
-              <Link href="/shop" className="hover:text-white transition-colors">
-=======
               <Link href="/categorias" className="hover:text-white transition-colors">
->>>>>>> redesign-final
                 Catálogo
               </Link>
               <Link href="/cart" className="hover:text-white transition-colors">

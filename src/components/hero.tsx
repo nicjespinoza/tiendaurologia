@@ -18,11 +18,7 @@ export function Hero() {
       <div className="absolute right-0 top-0 -z-10 h-96 w-96 rounded-full bg-white/5 blur-3xl" />
       <div className="absolute -left-20 bottom-0 -z-10 h-72 w-72 rounded-full bg-accent/10 blur-3xl" />
 
-<<<<<<< HEAD
-      <div className="section-max grid gap-10 py-20 md:py-28 lg:grid-cols-2 lg:items-center lg:gap-16">
-=======
       <div className="section-max grid gap-10 pt-48 pb-20 md:pt-64 md:pb-28 lg:grid-cols-2 lg:items-center lg:gap-16">
->>>>>>> redesign-final
         {/* ── Left Content ── */}
         <div className="space-y-7 animate-slide-in-left">
           <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white/90 backdrop-blur-sm border border-white/10">
@@ -45,11 +41,7 @@ export function Hero() {
           </p>
 
           <div className="flex flex-wrap gap-3 pt-1">
-<<<<<<< HEAD
-            <Link href="/shop">
-=======
             <Link href="/categorias">
->>>>>>> redesign-final
               <Button
                 size="lg"
                 className="bg-[#008237] text-white hover:bg-[#008237]/90 shadow-lg shadow-[#008237]/20 transition-all duration-300 hover:shadow-xl hover:shadow-[#008237]/30 group"
